@@ -54,30 +54,6 @@ public class BinaryTree {
 	    }
 	}
 	
-	/*EX2
-	 
-	 private generateRandomList(int size)
-	 {
-	 	List r;
-	 	for ( i++ < size) {
-	 		r.i.(random);
-	 	}
-	 	return r;
-	 }
-	 
-	 private BinaryTree createBinaryTreeFromList(list random){
-	 	BinaryTree bt = new BinaryTree();
-	 	
-	 	while(i < random.size) {
-		 	bt.add(random.i);
-		 	i += 1;
-	 	}
-	 	return bt;
-	 }
-	  
-	 
-	  
-	 */
 	
 }
 
