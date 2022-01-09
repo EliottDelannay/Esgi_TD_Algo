@@ -8,7 +8,7 @@ public class Tree {
 		
 	}
 	
-	private void buildStaticTree{
+	private void buildStaticTree(){
 	    Node a = new Node('a');
 	    Node b = new Node('b');
 	    Node c = new Node('c', false);
@@ -27,25 +27,29 @@ public class Tree {
 	    Node p = new Node('p',false);
 	}
 	
-	/* EX2
 	
 	
-	private void readLevelOrder( ) {
+	
+	private void readLevelOrder(List Node ) {
+	    children = []
+	            if t:
+	                children.extend(t.children)
+	                for ch in t.children:
+	                    children.extend(levelorder_visit(ch))
+	            return children
+	}
+	
+	private void readInOrder(List Node ) {
 		
 	}
 	
-	private void readInOrder( ) {
+	private void readPreOrder(List Node) {
 		
 	}
 	
-	private void readPreOrder() {
-		
-	}
-	
-	private void readPostOrder() {
+	private void readPostOrder(List Node) {
 		
 	}
 
-	 */
 	
 }
