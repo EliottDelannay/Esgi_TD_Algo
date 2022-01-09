@@ -53,7 +53,26 @@ public class BinaryTree {
 	        traversePreOrder(node.right);
 	    }
 	}
-	
+	 
+	 private generateRandomList()
+	 {
+	     size = 10000;
+	 	List r;
+	 	for ( i++ < size) {
+	 		r.i.(random);
+	 	}
+	 	return r;
+	 }
+	 
+	 private BinaryTree createBinaryTreeFromList(list random){
+	 	BinaryTree bt = new BinaryTree();
+	 	
+	 	while(i < random.size) {
+		 	bt.add(random.i);
+		 	i += 1;
+	 	}
+	 	return bt;
+	 }
 	
 }
 
