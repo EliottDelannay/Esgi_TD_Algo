@@ -54,30 +54,20 @@ public class BinaryTree {
 	    }
 	}
 	
-	/*EX2
-	 
-	 private generateRandomList(int size)
-	 {
-	 	List r;
-	 	for ( i++ < size) {
-	 		r.i.(random);
-	 	}
-	 	return r;
-	 }
-	 
-	 private BinaryTree createBinaryTreeFromList(list random){
-	 	BinaryTree bt = new BinaryTree();
-	 	
-	 	while(i < random.size) {
-		 	bt.add(random.i);
-		 	i += 1;
-	 	}
-	 	return bt;
-	 }
-	  
-	 
-	  
-	 */
+	public void IsEqual(Node node) {
+	    String l = 0;
+	    String r = 0;
+	    if (node != null) {
+            
+            traversePreOrder(node.left);
+            l+=1; 
+            traversePreOrder(node.right);
+            r+=1;
+            if (l != r) {
+                System.out.print("arbre non équilibré");
+            }
+        }
+	}
 	
 }
 
