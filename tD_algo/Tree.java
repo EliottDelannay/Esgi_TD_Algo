@@ -32,11 +32,13 @@ public class Tree {
 	
 	private void readLevelOrder(List Node ) {
 	    children = []
-	            if t:
-	                children.extend(t.children)
-	                for ch in t.children:
-	                    children.extend(levelorder_visit(ch))
-	            return children
+	            while (Node !empty) {
+	                   children.extend(t.children)
+	                    for ch in t.children:
+	                        children.extend(levelorder_visit(ch))
+	            }
+
+	            return children;
 	}
 	
 	private void readInOrder(List Node ) {
