@@ -39,7 +39,6 @@ public class Graphe {
         return false;
     }
 
-
     public List<Sommet> getSommets() {
         return sommets;
     }
@@ -51,7 +50,6 @@ public class Graphe {
     public void setSommets(List<Sommet> sommets) {
         this.sommets = sommets;
     }
-
 
     public static List<SommetDijkstra> calculateShortestPath(Graphe matrice, Sommet sommet) {
         ArrayList<SommetDijkstra> sommetDijkstras = new ArrayList<>();
@@ -67,23 +65,17 @@ public class Graphe {
             map.put(d.sommet.getNom(), i);
             sommetDijkstras.add(d);
         }
-        //set first node distance to 0
-        //TODO find from List Dijkstra a Dijkstra where the distance is lower and visited = false
-        //Dijkstra currentNode = returnLowerDistance(dijkstras, sommet);
+
         while (currentNode != null) {
             currentNode.visited = true;
-            //foreach create branch & node
+
             for (int i = 0; i < currentNode.sommet.sommetsAdjacents.size(); i++) {
-                //create an instance and return it after finding a lower path
-                //get the node from the list
-                //create node from currentNode
                 SommetDijkstra branchNode = sommetDijkstras.get(map.get(currentNode.sommet.getNom()));
                 Branche B =  currentNode.sommet.sommetsAdjacents.get(i);
-                // compare the distance
+
                 if (branchNode.getDistanceFromSource() > currentNode.distanceFromSource + B.getWeight()) {
                     branchNode.distanceFromSource = currentNode.distanceFromSource + B.getWeight();
                     branchNode.bestParentFromSource = currentNode.getNode();
-                    //B.node.bestParentFromSource = currentNode;
                     sommetDijkstras.set(i, branchNode);
                 }
             }
@@ -100,49 +92,10 @@ public class Graphe {
             } else {
                 currentNode = null;
             }
-            // currentNode.setDistanceFromSource(B.node.bestParentFromSource);
-            // Branch.node.distanceFromSource with lower value & Branch.node.visited = false
 
         }
         return sommetDijkstras;
     }
-/*
-    public static void calculateShortestPath(Graphe matrice,  Sommet sommet) {
-        ArrayList<Dijkstra> dijkstras = new ArrayList<>();
-        // Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i < matrice.getSommets().size(); i++) {
-            dijkstras.add(new Dijkstra(matrice.getSommet(i)));
-            if (sommet.)
-            //map.put(node.getId(),i);
-        }
-        //set first node distance to 0
-        //Dijkstra.setDistanceFromSource(0);
-        dijkstras.get(0).setDistanceFromSource(0);
-        //TODO find from List Dijkstra a Dijkstra where the distance is lower and visited = false
-        Dijkstra currentNode = returnLowerDistance(dijkstras, sommet);
-        while (currentNode.sommet != null) {
-            currentNode.visited = true;
-            //foreach create branch & node
-            for (int i = 0; i < currentNode.sommet.children.length; i++) {
-                //create an instance and return it after finding a lower path
-                //get the node from the list
-                //create node from currentNode*/ /*
-                Dijkstra branchNode = dijkstras.get(currentNode.sommet.getId());
-                Branch B =  currentNode.sommet.children[i];
-                // compare the distance
-                if (branchNode.getDistanceFromSource() > currentNode.distanceFromSource + B.getWeight()) {
-                    branchNode.distanceFromSource = currentNode.distanceFromSource + B.getWeight();
-                    branchNode.bestParentFromSource = currentNode.getNode();
-                    //B.node.bestParentFromSource = currentNode;
-                    dijkstras.set(i, branchNode);
-                }
-            }
-            // currentNode.setDistanceFromSource(B.node.bestParentFromSource);
-            // Branch.node.distanceFromSource with lower value & Branch.node.visited = false
-
-        }
-    }
-    */
 
     public static SommetDijkstra returnLowerDistance(ArrayList<SommetDijkstra> list, Sommet dijkstraNode)
     {
