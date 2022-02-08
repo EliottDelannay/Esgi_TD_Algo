@@ -4,15 +4,15 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Graphe graphe = new Graphe();
-		//matrice d'adjacence (matrice carré) entre plusieurs sommets
-		Integer[][] matrice = {
-            {0,1,0},
-            {1,0,1},
-            {0,1,0}
-		};
-		String[] noms = {"Lyon", "Bayonne", "Paris"};
+    public static void main(String[] args) {
+        Graphe graphe = new Graphe();
+        //matrice d'adjacence (matrice carré) entre plusieurs sommets
+        Integer[][] matrice = {
+                {0,1,0},
+                {1,0,1},
+                {0,1,0}
+        };
+        String[] noms = {"Lyon", "Bayonne", "Paris"};
 
         graphe.setGraphe(noms, matrice);
 
@@ -42,5 +42,13 @@ public class Main {
         int nombre = scanner.nextInt();
         // Affiche le nombre saisit par l'utilisateur
         System.out.println(nombre);
-	}
+
+
+        List<SommetDijkstra> list = Graphe.calculateShortestPath(graphe,graphe.getSommet(0) );
+        for (SommetDijkstra d: list) {
+            System.out.println(d.sommet.getNom());
+        }
+
+    }
+
 }

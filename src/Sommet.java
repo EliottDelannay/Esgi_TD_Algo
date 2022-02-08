@@ -3,14 +3,14 @@ import java.util.List;
 
 public class Sommet{
     private String nom;
-    List<Sommet> sommetsAdjacents;
+    List<Branche> sommetsAdjacents;
 
     public Sommet(String nom) {
         this.nom = nom;
         this.sommetsAdjacents = new ArrayList<>();
     }
 
-    public Sommet(String nom, List<Sommet> sommetsAdjacents) {
+    public Sommet(String nom, List<Branche> sommetsAdjacents) {
         this.nom = nom;
         this.sommetsAdjacents = sommetsAdjacents;
     }
@@ -23,16 +23,15 @@ public class Sommet{
         this.nom = nom;
     }
 
-    public List<Sommet> getSommetsAdjacents() {
+    public List<Branche> getSommetsAdjacents() {
         return sommetsAdjacents;
     }
 
-    public void setSommetsAdjacents(List<Sommet> sommetsAdjacents) {
+    public void setSommetsAdjacents(List<Branche> sommetsAdjacents) {
         this.sommetsAdjacents = sommetsAdjacents;
     }
 
-    public void setSommetAdjacent(Sommet sommetAdjacent) {
+    public void setSommetAdjacent(Branche sommetAdjacent) {
         this.sommetsAdjacents.add(sommetAdjacent);
     }
 }
-
