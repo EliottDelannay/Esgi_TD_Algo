@@ -8,21 +8,21 @@ public class Main {
     public static void main(String[] args) {
         Graphe graphe = new Graphe();
         Integer[][] matrice = {
-                {0,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                {1,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
-                {0,1,0,1,0,0,0,0,0,0,0,0,0,0,0},
-                {0,0,1,0,1,0,0,0,0,0,0,0,0,0,0},
-                {0,0,0,1,0,1,0,0,0,0,1,0,0,0,0},
-                {0,0,0,0,1,0,1,0,0,0,0,0,0,0,0},
-                {0,0,0,0,0,1,0,1,0,0,0,0,0,0,0},
-                {0,0,0,0,0,0,1,0,1,0,0,0,0,0,0},
-                {0,0,0,0,0,0,0,1,0,1,0,0,0,0,0},
-                {0,0,0,0,0,0,0,0,1,0,0,0,0,0,0},
-                {0,0,0,0,1,0,0,0,0,0,0,1,0,0,0},
-                {0,0,0,0,0,0,0,0,0,0,1,0,1,0,0},
-                {0,0,0,0,0,0,0,0,0,0,0,1,0,1,0},
-                {0,0,0,0,0,0,0,0,0,0,0,0,1,0,1},
-                {0,0,0,0,0,0,0,0,0,0,0,0,0,1,0}
+                {0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0}
         };
         String[] noms = {"Lyon", "Bayonne", "Paris", "Marseille", "Toulouse", "Nice", "Nantes", "Lille", "Toulon",
                 "Grenoble", "Dijon", "Villeurbanne", "Amiens", "Limoges", "Annecy"};
@@ -48,14 +48,14 @@ public class Main {
 
         System.out.println("Chemin inverse:");
         StringBuilder sChemin = new StringBuilder();
-        for(Sommet s: cheminInverse) {
+        for (Sommet s : cheminInverse) {
             sChemin.append(s.getNom()).append(" <- ");
         }
         sChemin = new StringBuilder(sChemin.substring(0, sChemin.length() - 3));
         System.out.println(sChemin);
 
         //TODO Calculer le temps
-        List<SommetDijkstra> list = Graphe.calculateShortestPath(graphe,graphe.getSommet(0) );
+        List<SommetDijkstra> list = Graphe.plusCoursChemin(graphe, graphe.getSommet(0));
        /* for (SommetDijkstra d: list) {
             System.out.println(d.sommet.getNom());
         }*/

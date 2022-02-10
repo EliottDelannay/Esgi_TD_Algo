@@ -1,48 +1,47 @@
 public class SommetDijkstra {
-    //TODO Rename
     Sommet sommet;
-    Boolean visited;
-    double distanceFromSource;
-    Sommet bestParentFromSource;
-    Integer myInf = Integer.MAX_VALUE;
+    Boolean visiter;
+    double distanceTrajet;
+    Sommet optimalTrajet;
+    Integer infinie = Integer.MAX_VALUE;
 
     public SommetDijkstra(Sommet s) {
         this.sommet = s;
-        this.visited = false;
-        this.distanceFromSource = myInf;
-        this.bestParentFromSource = null;
+        this.visiter = false;
+        this.distanceTrajet = infinie;
+        this.optimalTrajet = null;
     }
 
-    public Sommet getNode() {
+    public Sommet getSommet() {
         return sommet;
     }
 
-    public void setNode(Sommet sommet) {
+    public void setSommet(Sommet sommet) {
         this.sommet = sommet;
     }
 
-    public Boolean getVisited() {
-        return visited;
+    public Boolean getVisiter() {
+        return visiter;
     }
 
-    public void setVisited(Boolean visited) {
-        this.visited = visited;
+    public void setVisiter(Boolean visiter) {
+        this.visiter = visiter;
     }
 
-    public double getDistanceFromSource() {
-        return distanceFromSource;
+    public double getDistanceTrajet() {
+        return distanceTrajet;
     }
 
-    public void setDistanceFromSource(double distanceFromSource) {
-        this.distanceFromSource = distanceFromSource;
+    public void setDistanceTrajet(double distanceTrajet) {
+        this.distanceTrajet = distanceTrajet;
     }
 
-    public Sommet getBestParentFromSource() {
-        return bestParentFromSource;
+    public Sommet getOptimalTrajet() {
+        return optimalTrajet;
     }
 
-    public void setBestParentFromSource(Sommet bestParentFromSource) {
-        this.bestParentFromSource = bestParentFromSource;
+    public void setOptimalTrajet(Sommet optimalTrajet) {
+        this.optimalTrajet = optimalTrajet;
     }
 
 }

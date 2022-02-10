@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Sommet{
+public class Sommet {
     private String nom;
     List<Branche> sommetsAdjacents;
 

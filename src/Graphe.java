@@ -53,7 +53,7 @@ public class Graphe {
         this.sommets = sommets;
     }
 
-    public static List<SommetDijkstra> calculateShortestPath(Graphe matrice, Sommet sommet) {
+    public static List<SommetDijkstra> plusCoursChemin(Graphe matrice, Sommet sommet) {
         ArrayList<SommetDijkstra> sommetDijkstras = new ArrayList<>();
         SommetDijkstra currentNode = new SommetDijkstra(new Sommet(""));
         Map<String, Integer> map = new HashMap<>();
@@ -61,7 +61,7 @@ public class Graphe {
         for (int i = 0; i < matrice.getSommets().size(); i++) {
             SommetDijkstra d = new SommetDijkstra(matrice.getSommet(i));
             if (Objects.equals(sommet.getNom(), d.sommet.getNom())) {
-                d.setDistanceFromSource(0);
+                d.setDistanceTrajet(0);
                 currentNode = d;
             }
             map.put(d.sommet.getNom(), i);
@@ -69,30 +69,29 @@ public class Graphe {
         }
         //TODO make a function
         while (currentNode != null) {
-            currentNode.visited = true;
+            currentNode.visiter = true;
 
             for (int i = 0; i < currentNode.sommet.sommetsAdjacents.size(); i++) {
 
                 SommetDijkstra branchNode = sommetDijkstras.get(map.get(currentNode.sommet.getNom()));
-                Branche B =  currentNode.sommet.sommetsAdjacents.get(i);
+                Branche B = currentNode.sommet.sommetsAdjacents.get(i);
 
-                if (branchNode.getDistanceFromSource() > currentNode.distanceFromSource + B.getWeight()) {
-                    branchNode.distanceFromSource = currentNode.distanceFromSource + B.getWeight();
-                    branchNode.bestParentFromSource = currentNode.getNode();
+                if (branchNode.getDistanceTrajet() > currentNode.distanceTrajet + B.getPoids()) {
+                    branchNode.distanceTrajet = currentNode.distanceTrajet + B.getPoids();
+                    branchNode.optimalTrajet = currentNode.getSommet();
                     sommetDijkstras.set(i, branchNode);
                 }
             }
 
-
             //Todo make a function remove hardcoded parts
             SommetDijkstra init = new SommetDijkstra(new Sommet(""));
-            init.setBestParentFromSource(null);
-            for(SommetDijkstra sommetDijkstra : sommetDijkstras) {
-                if(init.getDistanceFromSource() > sommetDijkstra.getDistanceFromSource() && !sommetDijkstra.visited) {
+            init.setOptimalTrajet(null);
+            for (SommetDijkstra sommetDijkstra : sommetDijkstras) {
+                if (init.getDistanceTrajet() > sommetDijkstra.getDistanceTrajet() && !sommetDijkstra.visiter) {
                     init = sommetDijkstra;
                 }
             }
-            if(init.getDistanceFromSource() != init.myInf) {
+            if (init.getDistanceTrajet() != init.infinie) {
                 currentNode = init;
             } else {
                 currentNode = null;
@@ -102,20 +101,17 @@ public class Graphe {
         return sommetDijkstras;
     }
 
-    public static SommetDijkstra returnLowerDistance(ArrayList<SommetDijkstra> list, Sommet dijkstraNode)
-    {
+    public static SommetDijkstra distanceLaPlusCourte(ArrayList<SommetDijkstra> list, Sommet dijkstraNode) {
         double lowerPath = 0;
-        lowerPath = list.get(0).getDistanceFromSource();
+        lowerPath = list.get(0).getDistanceTrajet();
 
-        for (int i =1; i < list.size(); i++)
-        {
-            if (list.get(i).getVisited() == (false && list.get(i).getDistanceFromSource() < lowerPath))
-            {
-                lowerPath = list.get(i).getDistanceFromSource();
+        for (int i = 1; i < list.size(); i++) {
+            if (!list.get(i).getVisiter()) {
+                lowerPath = list.get(i).getDistanceTrajet();
             }
         }
         SommetDijkstra currentNode = new SommetDijkstra(dijkstraNode);
-        currentNode.setDistanceFromSource(lowerPath);
+        currentNode.setDistanceTrajet(lowerPath);
 
         return currentNode;
     }

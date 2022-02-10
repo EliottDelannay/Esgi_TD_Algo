@@ -1,19 +1,18 @@
 public class Branche {
-    //TODO Rename
-    double weight;
+    double poids;
     Sommet destination;
 
     public Branche(Sommet destination) {
-        this.weight = 1;
+        this.poids = 1;
         this.destination = destination;
     }
 
-    public double getWeight() {
-        return weight;
+    public double getPoids() {
+        return poids;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public void setPoids(double poids) {
+        this.poids = poids;
     }
 
     public Sommet getDestination() {
