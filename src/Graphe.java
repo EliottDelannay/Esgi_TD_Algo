@@ -1,6 +1,8 @@
 import java.util.*;
 
 public class Graphe {
+
+    //TODO Rename
     private List<Sommet> sommets;
 
     public Graphe() {
@@ -58,18 +60,19 @@ public class Graphe {
 
         for (int i = 0; i < matrice.getSommets().size(); i++) {
             SommetDijkstra d = new SommetDijkstra(matrice.getSommet(i));
-            if (sommet.getNom() == d.sommet.getNom()) {
+            if (Objects.equals(sommet.getNom(), d.sommet.getNom())) {
                 d.setDistanceFromSource(0);
                 currentNode = d;
             }
             map.put(d.sommet.getNom(), i);
             sommetDijkstras.add(d);
         }
-
+        //TODO make a function
         while (currentNode != null) {
             currentNode.visited = true;
 
             for (int i = 0; i < currentNode.sommet.sommetsAdjacents.size(); i++) {
+
                 SommetDijkstra branchNode = sommetDijkstras.get(map.get(currentNode.sommet.getNom()));
                 Branche B =  currentNode.sommet.sommetsAdjacents.get(i);
 
@@ -80,6 +83,8 @@ public class Graphe {
                 }
             }
 
+
+            //Todo make a function remove hardcoded parts
             SommetDijkstra init = new SommetDijkstra(new Sommet(""));
             init.setBestParentFromSource(null);
             for(SommetDijkstra sommetDijkstra : sommetDijkstras) {

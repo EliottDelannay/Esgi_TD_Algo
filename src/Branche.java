@@ -1,4 +1,5 @@
 public class Branche {
+    //TODO Rename
     double weight;
     Sommet destination;
 
@@ -23,4 +24,3 @@ public class Branche {
         this.destination = destination;
     }
 }
-

@@ -1,4 +1,5 @@
 public class SommetDijkstra {
+    //TODO Rename
     Sommet sommet;
     Boolean visited;
     double distanceFromSource;
