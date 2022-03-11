@@ -35,7 +35,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Saisir le nombre de la 1ère ville : ");
         int nombreV1 = scanner.nextInt();
-        System.out.println("Saisir le nombre de la 2ème Ville: ");
+        System.out.println("Saisir le nombre de la 2ème Ville : ");
         int nombreV2 = scanner.nextInt();
         System.out.print(System.lineSeparator());
 
