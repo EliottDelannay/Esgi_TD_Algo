@@ -2,7 +2,6 @@ import java.util.*;
 
 public class Graphe {
 
-    //TODO Rename
     private List<Sommet> sommets;
 
     public Graphe() {
@@ -49,11 +48,7 @@ public class Graphe {
         return sommets.get(i);
     }
 
-    public void setSommets(List<Sommet> sommets) {
-        this.sommets = sommets;
-    }
-
-    public static List<SommetDijkstra> plusCoursChemin(Graphe matrice, Sommet sommet) {
+    public static ArrayList<SommetDijkstra> plusCoursChemin(Graphe matrice, Sommet sommet) {
         ArrayList<SommetDijkstra> sommetDijkstras = new ArrayList<>();
         SommetDijkstra currentNode = new SommetDijkstra(new Sommet(""));
         Map<String, Integer> map = new HashMap<>();
@@ -67,23 +62,25 @@ public class Graphe {
             map.put(d.sommet.getNom(), i);
             sommetDijkstras.add(d);
         }
-        //TODO make a function
+
         while (currentNode != null) {
             currentNode.visiter = true;
 
             for (int i = 0; i < currentNode.sommet.sommetsAdjacents.size(); i++) {
-
-                SommetDijkstra branchNode = sommetDijkstras.get(map.get(currentNode.sommet.getNom()));
+                SommetDijkstra branchNode = sommetDijkstras.get(map.get(currentNode.sommet.sommetsAdjacents.get(i).getDestination().getNom()));
                 Branche B = currentNode.sommet.sommetsAdjacents.get(i);
 
                 if (branchNode.getDistanceTrajet() > currentNode.distanceTrajet + B.getPoids()) {
                     branchNode.distanceTrajet = currentNode.distanceTrajet + B.getPoids();
                     branchNode.optimalTrajet = currentNode.getSommet();
-                    sommetDijkstras.set(i, branchNode);
+                    for (int g = 0; g < sommetDijkstras.size(); g++) {
+                        if (Objects.equals(branchNode.getSommet().getNom(), sommetDijkstras.get(g).getSommet().getNom())) {
+                            sommetDijkstras.set(g, branchNode);
+                        }
+                    }
                 }
             }
 
-            //Todo make a function remove hardcoded parts
             SommetDijkstra init = new SommetDijkstra(new Sommet(""));
             init.setOptimalTrajet(null);
             for (SommetDijkstra sommetDijkstra : sommetDijkstras) {
@@ -101,19 +98,26 @@ public class Graphe {
         return sommetDijkstras;
     }
 
-    public static SommetDijkstra distanceLaPlusCourte(ArrayList<SommetDijkstra> list, Sommet dijkstraNode) {
-        double lowerPath = 0;
-        lowerPath = list.get(0).getDistanceTrajet();
+    public static ArrayList<Sommet> distanceLaPlusCourte(ArrayList<SommetDijkstra> list, Sommet cible) {
+        ArrayList<Sommet> plusCoursChemin = new ArrayList<>();
 
-        for (int i = 1; i < list.size(); i++) {
-            if (!list.get(i).getVisiter()) {
-                lowerPath = list.get(i).getDistanceTrajet();
+        SommetDijkstra currentNode = null;
+        for (SommetDijkstra sommetDijkstra : list) {
+            if (Objects.equals(sommetDijkstra.getSommet().getNom(), cible.getNom())) {
+                currentNode = sommetDijkstra;
+                plusCoursChemin.add(currentNode.getSommet());
             }
         }
-        SommetDijkstra currentNode = new SommetDijkstra(dijkstraNode);
-        currentNode.setDistanceTrajet(lowerPath);
 
-        return currentNode;
+        while (currentNode.getOptimalTrajet() != null) {
+            for (SommetDijkstra sommetDijkstra : list) {
+                if (currentNode.getOptimalTrajet() != null && Objects.equals(sommetDijkstra.getSommet().getNom(), currentNode.getOptimalTrajet().getNom())) {
+                    currentNode = sommetDijkstra;
+                    plusCoursChemin.add(currentNode.getSommet());
+                }
+            }
+        }
+        return plusCoursChemin;
     }
 
 }

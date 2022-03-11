@@ -16,18 +16,6 @@ public class SommetDijkstra {
         return sommet;
     }
 
-    public void setSommet(Sommet sommet) {
-        this.sommet = sommet;
-    }
-
-    public Boolean getVisiter() {
-        return visiter;
-    }
-
-    public void setVisiter(Boolean visiter) {
-        this.visiter = visiter;
-    }
-
     public double getDistanceTrajet() {
         return distanceTrajet;
     }

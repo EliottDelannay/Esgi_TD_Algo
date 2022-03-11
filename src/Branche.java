@@ -11,15 +11,7 @@ public class Branche {
         return poids;
     }
 
-    public void setPoids(double poids) {
-        this.poids = poids;
-    }
-
     public Sommet getDestination() {
         return destination;
-    }
-
-    public void setDestination(Sommet destination) {
-        this.destination = destination;
     }
 }
